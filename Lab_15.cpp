@@ -5,6 +5,7 @@
 #include <iostream>
 #include <string>
 #include <array>
+#include <fstream>
 using namespace std;
 
 class Movie{
@@ -30,6 +31,31 @@ class Movie{
         }
 };
  int main(){
+    ifstream inFile("input.txt");
+    if (!inFile) {
+        cerr << "Error: could not open input.txt" << endl;
+        return 1;
+    }
+    Movie movie[4];
+     string writer;
+     string title;
+     int year;
+
+     for ( int i=0; i<4 ; i++){
+         getline (inFile, title);
+         inFile >> year;
+         inFile.ignore();
+         getline (inFile, writer);
+         movie[i].setTitle(title);
+         movie[i].setYear(year);
+         movie[i].setWriter(writer);
+     }
+    inFile.close();
+
+    for (int i=0; i<4 ; i++){
+        movie[i].print();
+    }
+     return 0;
     
  }
 
