@@ -50,7 +50,7 @@ class Movie{
          inFile.ignore(); //to ignore the new line
          getline (inFile, writer);
          
-         Movie temp;                // temporary object
+         Movie temp;                // temporary object Movie
          temp.setTitle(title);
          temp.setYear(year);
          temp.setWriter(writer);
