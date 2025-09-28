@@ -31,28 +31,35 @@ class Movie{
         }
 };
  int main(){
+     //this is opening the file
     ifstream inFile("input.txt");
     if (!inFile) {
         cerr << "Error: could not open input.txt" << endl;
         return 1;
     }
+     //this is an array for the object,movie[number of variables]
     Movie movie[4];
      string writer;
      string title;
      int year;
 
+    //after opening the file, data is stored in year, writer, title
      for ( int i=0; i<4 ; i++){
          getline (inFile, title);
          inFile >> year;
-         inFile.ignore();
+         inFile.ignore(); //to ignore the new line
          getline (inFile, writer);
-         movie[i].setTitle(title);
-         movie[i].setYear(year);
-         movie[i].setWriter(writer);
+         
+         Movie temp;                // temporary object
+         temp.setTitle(title);
+         temp.setYear(year);
+         temp.setWriter(writer);
+
+    movie[i] = temp;  
      }
     inFile.close();
 
-    for (int i=0; i<4 ; i++){
+    for (int i=0; i<4 ; i++){ //printing data for each of the array
         movie[i].print();
     }
      return 0;
